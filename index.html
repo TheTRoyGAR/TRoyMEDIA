@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRoy Media Agency™ — TRoyMEDIA</title>
+  <style>
+    :root {
+      --bg: #0a0a12;
+      --accent: #c8a96e;
+      --text: #e8e8e8;
+      --muted: #555;
+      --border: #1a1a24;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Arial, sans-serif; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 20px; font-weight: 700; color: var(--accent); }
+    .nav-logo sup { font-size: 10px; }
+
+    .hero {
+      max-width: 800px;
+      margin: 140px auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .hero .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+    .hero h1 { font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 17px; color: var(--muted); margin: 24px auto 0; line-height: 1.7; max-width: 560px; }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 32px; }
+      nav { padding: 16px 24px; }
+      .hero { padding: 0 24px; margin: 100px auto; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">TRoyMEDIA<sup>™</sup></div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">TRoy Media Agency™</div>
+    <h1>Something new is <span>coming together</span>.</h1>
+    <p>
+      Part of TRoy Group™. This site is being built out — check back soon.
+    </p>
+  </section>
+
+  <footer>
+    TRoy Media Agency™ (TRoyMEDIA™) · Part of TRoy Group™<br />
+    CEO: I. Ertan Govdeli
+  </footer>
+</body>
+</html>
