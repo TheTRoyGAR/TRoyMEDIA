@@ -39,7 +39,7 @@ INSERT OR IGNORE INTO departments (id, name, description, agent_count) VALUES
   ('sales', 'Sales & Distribution', 'Pitches, distribution deals — 5 agents', 5),
   ('finance', 'Finance', 'Production budgets, royalties — 5 agents', 5),
   ('production', 'Production & Casting', 'Casting, scheduling, cast & crew support — 6 agents', 6),
-  ('advertising', 'Advertising', 'Client ad campaigns — strategy, creative, media planning — 5 agents', 5);
+  ('advertising', 'Advertising', 'Client ad campaigns — strategy, creative, media planning, AI video ad production — 6 agents', 6);
 
 -- Seed agents
 INSERT OR IGNORE INTO agents (id, department, name, role) VALUES
@@ -68,4 +68,5 @@ INSERT OR IGNORE INTO agents (id, department, name, role) VALUES
   ('adv-2', 'advertising', 'creative_director', 'Creative Director'),
   ('adv-3', 'advertising', 'media_planner', 'Media Planner & Buyer'),
   ('adv-4', 'advertising', 'copywriter', 'Copywriter'),
-  ('adv-5', 'advertising', 'account_strategist', 'Account Strategist');
+  ('adv-5', 'advertising', 'account_strategist', 'Account Strategist'),
+  ('adv-6', 'advertising', 'video_production_specialist', 'AI Video Production Specialist');

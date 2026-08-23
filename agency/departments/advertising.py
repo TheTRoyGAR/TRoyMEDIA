@@ -5,7 +5,7 @@ from agency.tools import search, scrape, write
 
 
 class AdvertisingDepartment:
-    """Advertising Department — 1 head + 4 specialists. Skills: AD_CAMPAIGN_STRATEGY, CREATIVE_CONCEPT, MEDIA_PLANNING."""
+    """Advertising Department — 1 head + 5 specialists. Skills: AD_CAMPAIGN_STRATEGY, CREATIVE_CONCEPT, MEDIA_PLANNING, VIDEO_AD_PRODUCTION."""
 
     def __init__(self):
         llm = get_llm("sonnet")
@@ -31,7 +31,11 @@ class AdvertisingDepartment:
                 "2. CREATIVE_CONCEPT — Develop a real creative concept and ad copy/script for "
                 "a campaign — never invent a client fact, statistic, or claim not in the brief.\n"
                 "3. MEDIA_PLANNING — Plan real media placement: which real channels/platforms "
-                "fit the audience and budget, and why.\n\n"
+                "fit the audience and budget, and why.\n"
+                "4. VIDEO_AD_PRODUCTION — Plan a real video ad (TV/YouTube) production using "
+                "real AI video-generation tools (e.g. Google's AI Studio/Veo class tools) — "
+                "script, shot/scene breakdown, and how it maps to a real YouTube ad format or "
+                "Google Ads campaign structure.\n\n"
                 "Never guess a real client fact, a real platform's ad rates, or an audience "
                 "statistic — if it isn't in the brief or genuinely researched, say so instead "
                 "of inventing it."
@@ -77,6 +81,28 @@ class AdvertisingDepartment:
             ),
             llm=llm,
             tools=[write],
+            verbose=False,
+        )
+
+        self.video_production_specialist = Agent(
+            role="AI Video Production Specialist",
+            goal=(
+                "Plan real video ad production for TV and YouTube using real AI "
+                "video-generation tools, mapped to real ad-platform formats."
+            ),
+            backstory=(
+                "You are the AI Video Production Specialist at TRoy Media Agency. You plan "
+                "video ad production using real AI video-generation tools (e.g. Google's AI "
+                "Studio/Veo class tools) — writing the script and shot/scene breakdown, and "
+                "mapping the finished ad to a real YouTube ad format (skippable in-stream, "
+                "bumper, etc.) or Google Ads campaign structure. This connects TRoyMEDIA's "
+                "production capability directly to TRoyAI's client work — when TRoyAI brings "
+                "in a client that needs real video ads made, this is the real fulfillment. "
+                "Never invent a platform spec, format name, or capability you haven't actually "
+                "confirmed — flag it instead."
+            ),
+            llm=llm,
+            tools=[search, scrape, write],
             verbose=False,
         )
 
@@ -153,6 +179,29 @@ class AdvertisingDepartment:
         crew = Crew(agents=[self.media_planner], tasks=[task], process=Process.sequential, memory=shared_memory, verbose=False)
         result = str(crew.kickoff())
         remember(f"Advertising MEDIA_PLANNING for '{brief}':\n{result}", scope="/dept/advertising/media_planning", categories=["advertising", "media"])
+        return result
+
+    def video_ad_production(self, brief: str) -> str:
+        task = Task(
+            description=(
+                f"{recall_context(brief)}"
+                f"VIDEO_AD_PRODUCTION: Plan a real video ad production for: {brief}\n\n"
+                "Write a script and shot/scene breakdown, planned around real AI "
+                "video-generation tools. Map the finished ad to a real YouTube ad format or "
+                "Google Ads campaign structure. Never invent a platform spec or capability you "
+                "haven't confirmed — flag anything uncertain instead."
+            ),
+            expected_output=(
+                "## Video Ad Production Plan\n**Script**\n**Shot/Scene Breakdown**\n"
+                "**AI Video Tooling** — what would actually be used and how\n"
+                "**Target Ad Format** — real YouTube/Google Ads format this fits\n"
+                "**Confidence Note** — anything unverified"
+            ),
+            agent=self.video_production_specialist,
+        )
+        crew = Crew(agents=[self.video_production_specialist], tasks=[task], process=Process.sequential, memory=shared_memory, verbose=False)
+        result = str(crew.kickoff())
+        remember(f"Advertising VIDEO_AD_PRODUCTION for '{brief}':\n{result}", scope="/dept/advertising/video_ad_production", categories=["advertising", "video"])
         return result
 
     def run_campaign(self, brief: str) -> str:

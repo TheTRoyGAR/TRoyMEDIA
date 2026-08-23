@@ -293,6 +293,15 @@ def advertising_media_planning(request: TaskRequest) -> TaskResponse:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/advertising/video-ad-production", response_model=TaskResponse)
+def advertising_video_ad_production(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.advertising.video_ad_production(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def route_and_execute(department: str, skill: str, brief: str) -> str:
     department = department.lower()
     skill = skill.lower()
@@ -332,6 +341,7 @@ def route_and_execute(department: str, skill: str, brief: str) -> str:
             "ad_campaign_strategy": agency.advertising.ad_campaign_strategy,
             "creative_concept": agency.advertising.creative_concept,
             "media_planning": agency.advertising.media_planning,
+            "video_ad_production": agency.advertising.video_ad_production,
             "run_campaign": agency.advertising.run_campaign,
         },
     }
