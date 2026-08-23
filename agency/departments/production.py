@@ -5,7 +5,7 @@ from agency.tools import search, scrape, write
 
 
 class ProductionDepartment:
-    """Production & Casting Department — 1 head + 4 specialists. Skills: CASTING_CALL, PRODUCTION_SCHEDULE, TALENT_SUPPORT."""
+    """Production & Casting Department — 1 head + 5 specialists. Skills: CASTING_CALL, PRODUCTION_SCHEDULE, TALENT_SUPPORT, SCRIPT_DEVELOPMENT, CREW_SUPPORT."""
 
     def __init__(self):
         llm = get_llm("sonnet")
@@ -30,7 +30,12 @@ class ProductionDepartment:
                 "days, locations, crew needs) — never invent an unrealistic timeline.\n"
                 "3. TALENT_SUPPORT — Plan real, concrete support for cast members during "
                 "production — logistics, wellbeing, communication — genuinely useful, not "
-                "just a checklist.\n\n"
+                "just a checklist.\n"
+                "4. SCRIPT_DEVELOPMENT — Support real script/story development for a production, "
+                "grounded in the actual brief.\n"
+                "5. CREW_SUPPORT — Plan real support for everyone behind the camera — "
+                "cinematographers, editors, scriptwriters, set and art designers, sound, and "
+                "every other crew role — separate from cast/talent support.\n\n"
                 "Never guess a real production detail — a wrong schedule or unsupported cast "
                 "member is a real, costly problem."
             ),
@@ -68,6 +73,26 @@ class ProductionDepartment:
             role="Script Development Specialist",
             goal="Support real script and story development for productions.",
             backstory="You are the Script Development Specialist at TRoy Media Agency. You support real story/script development work, grounded in the actual brief.",
+            llm=llm,
+            verbose=False,
+        )
+
+        self.crew_support_manager = Agent(
+            role="Crew Support Manager",
+            goal=(
+                "Plan real, concrete support for everyone behind the camera — cinematographers, "
+                "editors, scriptwriters, set and art designers, sound, and every other crew role "
+                "— separate from cast/talent, who are covered by Talent Support."
+            ),
+            backstory=(
+                "You are the Crew Support Manager at TRoy Media Agency (TRoyMEDIA). Real "
+                "productions run on far more than the actors on screen — the below-the-line crew "
+                "(cinematographers, editors, scriptwriters, set/art designers, sound, and every "
+                "other behind-the-camera role) makes the production actually happen. Your job is "
+                "to plan genuine, practical support for that crew — scheduling, logistics, "
+                "working conditions, communication — grounded in the real brief, never a generic "
+                "checklist."
+            ),
             llm=llm,
             verbose=False,
         )
@@ -110,6 +135,39 @@ class ProductionDepartment:
         crew = Crew(agents=[self.talent_support_manager], tasks=[task], process=Process.sequential, memory=shared_memory, verbose=False)
         result = str(crew.kickoff())
         remember(f"Production TALENT_SUPPORT for '{brief}':\n{result}", scope="/dept/production/talent_support", categories=["production", "talent"])
+        return result
+
+    def script_development(self, brief: str) -> str:
+        task = Task(
+            description=(
+                f"{recall_context(brief)}"
+                f"SCRIPT_DEVELOPMENT: Support real script/story development for: {brief}\n\n"
+                "Ground everything in the actual brief — never invent plot details, character "
+                "names, or story facts that weren't given or genuinely researched."
+            ),
+            expected_output="## Script Development Notes\n**Story/Concept Direction**\n**Structure Notes**\n**Open Questions for the Brief Owner**",
+            agent=self.script_development_specialist,
+        )
+        crew = Crew(agents=[self.script_development_specialist], tasks=[task], process=Process.sequential, memory=shared_memory, verbose=False)
+        result = str(crew.kickoff())
+        remember(f"Production SCRIPT_DEVELOPMENT for '{brief}':\n{result}", scope="/dept/production/script_development", categories=["production", "script"])
+        return result
+
+    def crew_support(self, brief: str) -> str:
+        task = Task(
+            description=(
+                f"{recall_context(brief)}"
+                f"CREW_SUPPORT: Plan real, concrete support for the below-the-line crew for: {brief}\n\n"
+                "Cover cinematographers, editors, scriptwriters, set/art designers, sound, and "
+                "any other crew role the brief involves — scheduling, logistics, working "
+                "conditions, communication. Genuinely useful, not a generic checklist."
+            ),
+            expected_output="## Crew Support Plan\n**Crew Roles Covered**\n**Scheduling/Logistics**\n**Working Conditions**\n**Communication Plan**",
+            agent=self.crew_support_manager,
+        )
+        crew = Crew(agents=[self.crew_support_manager], tasks=[task], process=Process.sequential, memory=shared_memory, verbose=False)
+        result = str(crew.kickoff())
+        remember(f"Production CREW_SUPPORT for '{brief}':\n{result}", scope="/dept/production/crew_support", categories=["production", "crew"])
         return result
 
     def run_task(self, brief: str) -> str:

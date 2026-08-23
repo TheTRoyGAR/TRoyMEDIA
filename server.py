@@ -248,6 +248,24 @@ def production_talent_support(request: TaskRequest) -> TaskResponse:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/production/script-development", response_model=TaskResponse)
+def production_script_development(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.production.script_development(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/production/crew-support", response_model=TaskResponse)
+def production_crew_support(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.production.crew_support(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def route_and_execute(department: str, skill: str, brief: str) -> str:
     department = department.lower()
     skill = skill.lower()
@@ -261,6 +279,8 @@ def route_and_execute(department: str, skill: str, brief: str) -> str:
             "casting_call": agency.production.casting_call,
             "production_schedule": agency.production.production_schedule,
             "talent_support": agency.production.talent_support,
+            "script_development": agency.production.script_development,
+            "crew_support": agency.production.crew_support,
             "run_task": agency.production.run_task,
         },
         "marketing": {
