@@ -78,6 +78,8 @@
 
     .services { max-width: 1080px; margin: 0 auto 90px; }
     .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .service-grid.five { grid-template-columns: repeat(2, 1fr); }
+    .service-grid.five .service-card:last-child { grid-column: 1 / -1; }
     .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 26px; transition: border-color 0.2s, transform 0.2s; }
     .service-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
     .service-card .icon { font-size: 20px; color: var(--accent); margin-bottom: 12px; }
@@ -143,7 +145,7 @@
 
   <section class="proof">
     <div class="proof-grid">
-      <div class="proof-cell"><div class="num">4</div><div class="lbl">Departments</div></div>
+      <div class="proof-cell"><div class="num">5</div><div class="lbl">Departments</div></div>
       <div class="proof-cell"><div class="num">21</div><div class="lbl">Real Agents</div></div>
       <div class="proof-cell"><div class="num">0</div><div class="lbl">Employees</div></div>
       <div class="proof-cell"><div class="num">1</div><div class="lbl">CEO, Real &amp; Hands-On</div></div>
@@ -179,7 +181,7 @@
   <section class="services" id="services">
     <div class="section-label">Real Agents, Real Departments</div>
     <h2 class="section-title">Every department, real work</h2>
-    <div class="service-grid">
+    <div class="service-grid five">
       <div class="service-card">
         <div class="icon">◉</div>
         <h3>Marketing</h3>
@@ -218,6 +220,16 @@
           <span class="skill-tag">CASTING_CALL</span>
           <span class="skill-tag">PRODUCTION_SCHEDULE</span>
           <span class="skill-tag">TALENT_SUPPORT</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon">◎</div>
+        <h3>Management</h3>
+        <p>The CEO Assistant — intakes every brief, delegates it to the right department, reviews the output, and signs off before anything ships.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">DELEGATE</span>
+          <span class="skill-tag">REVIEW</span>
+          <span class="skill-tag">FINAL_QA</span>
         </div>
       </div>
     </div>
