@@ -266,6 +266,33 @@ def production_crew_support(request: TaskRequest) -> TaskResponse:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/advertising/ad-campaign-strategy", response_model=TaskResponse)
+def advertising_ad_campaign_strategy(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.advertising.ad_campaign_strategy(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/advertising/creative-concept", response_model=TaskResponse)
+def advertising_creative_concept(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.advertising.creative_concept(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/advertising/media-planning", response_model=TaskResponse)
+def advertising_media_planning(request: TaskRequest) -> TaskResponse:
+    try:
+        result = agency.advertising.media_planning(request.brief)
+        return TaskResponse(task_id=request.task_id, status="completed", result=result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def route_and_execute(department: str, skill: str, brief: str) -> str:
     department = department.lower()
     skill = skill.lower()
@@ -300,6 +327,12 @@ def route_and_execute(department: str, skill: str, brief: str) -> str:
             "royalty_tracking": agency.finance.royalty_tracking,
             "reporting": agency.finance.reporting,
             "generate_report": agency.finance.generate_report,
+        },
+        "advertising": {
+            "ad_campaign_strategy": agency.advertising.ad_campaign_strategy,
+            "creative_concept": agency.advertising.creative_concept,
+            "media_planning": agency.advertising.media_planning,
+            "run_campaign": agency.advertising.run_campaign,
         },
     }
 

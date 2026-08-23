@@ -18,6 +18,7 @@
         <a href="#/sales" class="nav-item" data-page="sales"><span class="nav-icon">◈</span>Sales</a>
         <a href="#/finance" class="nav-item" data-page="finance"><span class="nav-icon">◆</span>Finance</a>
         <a href="#/production" class="nav-item" data-page="production"><span class="nav-icon">🎬</span>Production</a>
+        <a href="#/advertising" class="nav-item" data-page="advertising"><span class="nav-icon">📣</span>Advertising</a>
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-status">
@@ -44,8 +45,8 @@
         <!-- ═══ OVERVIEW ═══ -->
         <div class="page" id="page-overview">
           <section class="kpi-row">
-            <div class="kpi-card"><div class="kpi-value">5</div><div class="kpi-label">Departments</div></div>
-            <div class="kpi-card"><div class="kpi-value">22</div><div class="kpi-label">Active Agents</div></div>
+            <div class="kpi-card"><div class="kpi-value">6</div><div class="kpi-label">Departments</div></div>
+            <div class="kpi-card"><div class="kpi-value">27</div><div class="kpi-label">Active Agents</div></div>
             <div class="kpi-card"><div class="kpi-value" id="tasks-count">—</div><div class="kpi-label">Tasks Run</div></div>
             <div class="kpi-card"><div class="kpi-value" id="uptime">Online</div><div class="kpi-label">Agency Status</div></div>
           </section>
@@ -178,6 +179,31 @@
           <section class="task-section">
             <h2>Recent Production Runs</h2>
             <div id="dept-task-list-production"><p class="empty-state">No tasks run yet.</p></div>
+          </section>
+        </div>
+
+        <!-- ═══ ADVERTISING ═══ -->
+        <div class="page" id="page-advertising">
+          <div class="dept-card dept-card-solo" data-dept="advertising">
+            <div class="dept-header"><span class="dept-icon">📣</span><span class="dept-name">Advertising</span></div>
+            <ul class="agent-list">
+              <li class="agent-head">Head of the AI Advertising Department <span class="skill-tags">AD_CAMPAIGN_STRATEGY · CREATIVE_CONCEPT · MEDIA_PLANNING</span></li>
+              <li>Creative Director</li>
+              <li>Media Planner &amp; Buyer</li>
+              <li>Copywriter</li>
+              <li>Account Strategist</li>
+            </ul>
+            <div class="btn-group">
+              <button class="run-btn" data-dept="advertising" data-task="run_campaign">Run Campaign</button>
+              <button class="run-btn skill-btn" data-dept="advertising" data-task="ad_campaign_strategy">Campaign Strategy</button>
+              <button class="run-btn skill-btn" data-dept="advertising" data-task="creative_concept">Creative Concept</button>
+              <button class="run-btn skill-btn" data-dept="advertising" data-task="media_planning">Media Planning</button>
+            </div>
+            <p class="dept-note">Builds real ad campaigns for client companies and products — separate from Marketing, which promotes TRoyMEDIA's own productions and talent.</p>
+          </div>
+          <section class="task-section">
+            <h2>Recent Advertising Runs</h2>
+            <div id="dept-task-list-advertising"><p class="empty-state">No tasks run yet.</p></div>
           </section>
         </div>
 

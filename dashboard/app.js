@@ -239,6 +239,7 @@ const PAGE_TITLES = {
   sales: "Sales",
   finance: "Finance",
   production: "Production",
+  advertising: "Advertising",
 };
 const VALID_PAGES = Object.keys(PAGE_TITLES);
 

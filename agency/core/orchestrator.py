@@ -28,9 +28,9 @@ class CoreOrchestrator:
                 "I. Ertan Govdeli, creating series and dramas, supporting casting, and backing "
                 "actors and actresses through production and broadcasting. "
                 "Your job is to intake briefs — a new production, a casting need, a broadcaster "
-                "pitch, an internal task — define strategy, and break the work down into tasks "
-                "for your 4 department heads: Marketing, Sales & Distribution, Finance, and "
-                "Production & Casting.\n\n"
+                "pitch, a client ad campaign, an internal task — define strategy, and break the "
+                "work down into tasks for your 5 department heads: Marketing, Sales & "
+                "Distribution, Finance, Production & Casting, and Advertising.\n\n"
                 "You possess three core skills:\n"
                 "1. DELEGATE — Assign tasks to specific departmental agents with clear, scoped instructions.\n"
                 "2. REVIEW — Evaluate department outputs against the original brief, "
@@ -62,6 +62,7 @@ class CoreOrchestrator:
                 "SALES: [specific deliverable]\n"
                 "FINANCE: [specific deliverable]\n"
                 "PRODUCTION: [specific deliverable]\n"
+                "ADVERTISING: [specific deliverable]\n"
                 "Include priority order and any cross-department dependencies.\n\n"
                 "needs_clarification: list of specific missing-info questions to ask, "
                 "empty list if the brief has everything needed."
@@ -81,6 +82,7 @@ class CoreOrchestrator:
         sales_keys = ["sales", "distribution", "broadcast", "pitch", "network", "streamer", "deal", "licens"]
         finance_keys = ["finance", "roi", "cost", "revenue", "invoice", "billing", "budget", "report", "royalt"]
         production_keys = ["production", "cast", "casting", "actor", "actress", "talent", "audition", "script", "series", "drama", "shoot", "crew", "schedule", "set"]
+        advertising_keys = ["advertis", "ad campaign", "commercial", "media plan", "media buy", "creative concept", "client product", "ad copy"]
 
         if any(k in combined for k in marketing_keys):
             results["Marketing"] = self.agency.marketing.run_campaign(brief)
@@ -90,6 +92,8 @@ class CoreOrchestrator:
             results["Finance"] = self.agency.finance.generate_report("project")
         if any(k in combined for k in production_keys):
             results["Production"] = self.agency.production.run_task(brief)
+        if any(k in combined for k in advertising_keys):
+            results["Advertising"] = self.agency.advertising.run_campaign(brief)
 
         if not results:
             results["Marketing"] = self.agency.marketing.run_campaign(brief)
