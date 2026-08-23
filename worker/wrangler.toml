@@ -1,0 +1,32 @@
+name = "troymedia-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+account_id = "7f9d6ab3d14d37e9fc6f4cec7527a94a"
+
+[vars]
+AGENCY_NAME = "TRoyMEDIAgency"
+CEO = "I. Ertan Govdeli"
+WORKER_PUBLIC_URL = "https://api.troymediagency.com"
+# Public hostname of the Cloudflare Tunnel pointing at your local server.py.
+# Leave unset to disable task execution — tasks will just sit at 'queued'.
+BACKEND_URL = "https://backend.troymediagency.com"
+
+# AGENT_API_KEY (checked against the dashboard's Authorization header) and
+# BACKEND_API_KEY (sent to the tunnel as X-Backend-Key, must match the
+# backend's .env BACKEND_API_KEY) are secrets — do NOT put them here:
+#   wrangler secret put AGENT_API_KEY
+#   wrangler secret put BACKEND_API_KEY
+
+[[d1_databases]]
+binding = "DB"
+database_name = "troymedia-db"
+database_id = "585c9bee-9155-41ba-936d-09e9e09ad2bb"
+
+[[routes]]
+pattern = "api.troymediagency.com/*"
+zone_name = "troymediagency.com"
+
+# Sweeps tasks stuck at 'running' because the backend crashed/restarted after
+# accepting a job but before calling back to /api/tasks/:id/callback.
+[triggers]
+crons = ["*/10 * * * *"]
