@@ -70,7 +70,13 @@
 
     .pillars { max-width: 1100px; margin: 0 auto 90px; }
     .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .pillar { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; transition: border-color 0.2s, transform 0.2s; }
+    .pillar {
+      position: relative;
+      background:
+        linear-gradient(160deg, rgba(10,10,18,0.94), rgba(10,10,18,0.88)),
+        var(--pillar-img) center/cover no-repeat, var(--bg2);
+      border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; transition: border-color 0.2s, transform 0.2s;
+    }
     .pillar:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
     .pillar .icon { font-size: 26px; color: var(--accent); margin-bottom: 16px; }
     .pillar h3 { font-size: 18px; margin-bottom: 12px; }
@@ -160,22 +166,22 @@
   <section class="pillars">
     <div class="section-label">What We Do</div>
     <div class="pillar-grid">
-      <div class="pillar">
+      <div class="pillar" style="--pillar-img: url('https://images.unsplash.com/photo-1637248578458-934f03db3ea2?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">🎬</div>
         <h3>Production</h3>
         <p>Real series and dramas, from script development through a realistic, workable shoot schedule.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar" style="--pillar-img: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">🎭</div>
         <h3>Casting</h3>
         <p>Real casting processes that find the right actors and actresses for every role — never guesswork.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar" style="--pillar-img: url('https://images.unsplash.com/photo-1512462629038-1ff3395c5e5d?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">🤝</div>
         <h3>Talent Support</h3>
         <p>Genuine support for cast members throughout production — logistics, wellbeing, communication.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar" style="--pillar-img: url('https://images.unsplash.com/photo-1612544409025-e1f6a56c1152?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">🎥</div>
         <h3>All Media Workers — Front &amp; Back</h3>
         <p>Real support for everyone else who makes a production happen — cinematographers, editors, scriptwriters, set and art designers, sound, and every other crew role, on set and behind it.</p>
