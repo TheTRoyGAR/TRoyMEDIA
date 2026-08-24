@@ -63,8 +63,15 @@
     .section-title { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 44px; letter-spacing: -0.5px; }
 
     .proof { max-width: 900px; margin: 0 auto 90px; }
-    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-    .proof-cell { background: var(--bg2); padding: 26px 14px; text-align: center; }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background:
+        linear-gradient(160deg, rgba(10,10,18,0.93), rgba(10,10,18,0.88)),
+        url('https://images.unsplash.com/photo-1671575584088-03eb2811c30f?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat,
+        var(--border);
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    }
+    .proof-cell { background: transparent; padding: 26px 14px; text-align: center; }
     .proof-cell .num { font-size: 28px; font-weight: 800; color: var(--accent); }
     .proof-cell .lbl { font-size: 11px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
 
