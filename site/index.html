@@ -80,7 +80,12 @@
     .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .service-grid.five { grid-template-columns: repeat(2, 1fr); }
     .service-grid.five .service-card:last-child { grid-column: 1 / -1; }
-    .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 26px; transition: border-color 0.2s, transform 0.2s; }
+    .service-card {
+      background:
+        linear-gradient(160deg, rgba(10,10,18,0.94), rgba(10,10,18,0.88)),
+        var(--card-img) center/cover no-repeat, var(--bg2);
+      border: 1px solid var(--border); border-radius: 10px; padding: 26px; transition: border-color 0.2s, transform 0.2s;
+    }
     .service-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
     .service-card .icon { font-size: 20px; color: var(--accent); margin-bottom: 12px; }
     .service-card h3 { font-size: 17px; margin-bottom: 8px; }
@@ -182,7 +187,7 @@
     <div class="section-label">Real Agents, Real Departments</div>
     <h2 class="section-title">Every department, real work</h2>
     <div class="service-grid">
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">◉</div>
         <h3>Marketing</h3>
         <p>Real entertainment trend research, promotional content grounded in real project facts, and honest publicity audits.</p>
@@ -192,7 +197,7 @@
           <span class="skill-tag">PUBLICITY_AUDIT</span>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">◈</div>
         <h3>Sales &amp; Distribution</h3>
         <p>Real, structured pitches, genuine broadcaster/streamer research, and honest deal negotiation.</p>
@@ -202,7 +207,7 @@
           <span class="skill-tag">OBJECTION_HANDLER</span>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">◆</div>
         <h3>Finance</h3>
         <p>Real, itemized production budgets, accurate royalty tracking for talent, and reporting you can trust.</p>
@@ -212,7 +217,7 @@
           <span class="skill-tag">REPORTING</span>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1682130301125-5b63bbf93241?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">🎬</div>
         <h3>Production &amp; Casting</h3>
         <p>Real casting calls, realistic production schedules, script development support, and genuine support for both cast and crew throughout the shoot.</p>
@@ -224,7 +229,7 @@
           <span class="skill-tag">CREW_SUPPORT</span>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">◎</div>
         <h3>Management</h3>
         <p>The CEO Assistant — intakes every brief, delegates it to the right department, reviews the output, and signs off before anything ships.</p>
@@ -234,7 +239,7 @@
           <span class="skill-tag">FINAL_QA</span>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card" style="--card-img: url('https://images.unsplash.com/photo-1727451139462-cd34008cd50b?auto=format&fit=crop&w=800&q=60');">
         <div class="icon">📣</div>
         <h3>Advertising</h3>
         <p>Real ad campaigns for client companies and products — strategy, creative concepts, media planning, and AI-generated video ad production for TV, YouTube, and Google Ads. Separate from Marketing, which promotes TRoyMEDIAgency's own productions.</p>
