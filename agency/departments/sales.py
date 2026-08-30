@@ -8,7 +8,7 @@ class SalesDepartment:
     """Sales & Distribution Department — 1 head + 4 specialists. Skills: PITCH_DEVELOPMENT, DISTRIBUTION_DEAL, OBJECTION_HANDLER."""
 
     def __init__(self):
-        llm = get_llm("sonnet")
+        llm = get_llm("haiku")
 
         self.sales_head = Agent(
             role="Head of the AI Sales & Distribution Department",

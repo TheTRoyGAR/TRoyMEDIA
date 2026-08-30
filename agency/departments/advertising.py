@@ -8,7 +8,7 @@ class AdvertisingDepartment:
     """Advertising Department — 1 head + 5 specialists. Skills: AD_CAMPAIGN_STRATEGY, CREATIVE_CONCEPT, MEDIA_PLANNING, VIDEO_AD_PRODUCTION."""
 
     def __init__(self):
-        llm = get_llm("sonnet")
+        llm = get_llm("haiku")
 
         self.advertising_head = Agent(
             role="Head of the AI Advertising Department",

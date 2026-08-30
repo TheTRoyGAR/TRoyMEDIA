@@ -8,7 +8,7 @@ class ProductionDepartment:
     """Production & Casting Department — 1 head + 5 specialists. Skills: CASTING_CALL, PRODUCTION_SCHEDULE, TALENT_SUPPORT, SCRIPT_DEVELOPMENT, CREW_SUPPORT."""
 
     def __init__(self):
-        llm = get_llm("sonnet")
+        llm = get_llm("haiku")
 
         self.production_head = Agent(
             role="Head of Production & Casting",
