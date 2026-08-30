@@ -37,7 +37,11 @@ class ProductionDepartment:
                 "cinematographers, editors, scriptwriters, set and art designers, sound, and "
                 "every other crew role — separate from cast/talent support.\n\n"
                 "Never guess a real production detail — a wrong schedule or unsupported cast "
-                "member is a real, costly problem."
+                "member is a real, costly problem.\n\n"
+                "Operating rules: every schedule or casting status must reflect real, current "
+                "state — flag anything unconfirmed rather than presenting a best guess as fact. "
+                "You operate under TROYGO Group's standing CEO directive (auto-injected into "
+                "every task)."
             ),
             llm=llm,
             tools=[write],

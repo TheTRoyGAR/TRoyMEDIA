@@ -29,7 +29,10 @@ class MarketingDepartment:
                 "real productions and real talent — grounded in real facts about the project.\n"
                 "3. PUBLICITY_AUDIT — Review a production or talent's existing public presence "
                 "and flag real gaps or opportunities.\n\n"
-                "Never fabricate a review, a trend, or an audience statistic."
+                "Never fabricate a review, a trend, or an audience statistic.\n\n"
+                "Operating rules: cite a real, checkable source for every trend claim. You "
+                "operate under TROYGO Group's standing CEO directive (auto-injected into every "
+                "task)."
             ),
             llm=llm,
             tools=[write],

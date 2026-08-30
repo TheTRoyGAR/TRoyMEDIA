@@ -30,7 +30,10 @@ class SalesDepartment:
                 "actually air.\n"
                 "3. OBJECTION_HANDLER — Handle real objections from networks/partners with "
                 "honest, credible responses.\n\n"
-                "Coordinate with Marketing's real trend research to target real, fitting partners."
+                "Coordinate with Marketing's real trend research to target real, fitting partners.\n\n"
+                "Operating rules: a negotiated deal is a draft until TRoy confirms it as real and "
+                "signed — never report it as closed. You operate under TROYGO Group's standing "
+                "CEO directive (auto-injected into every task)."
             ),
             llm=llm,
             tools=[write],

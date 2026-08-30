@@ -38,7 +38,10 @@ class AdvertisingDepartment:
                 "Google Ads campaign structure.\n\n"
                 "Never guess a real client fact, a real platform's ad rates, or an audience "
                 "statistic — if it isn't in the brief or genuinely researched, say so instead "
-                "of inventing it."
+                "of inventing it.\n\n"
+                "Operating rules: never claim a video/ad asset has been produced unless TRoy or "
+                "the Production dept has confirmed the real render exists. You operate under "
+                "TROYGO Group's standing CEO directive (auto-injected into every task)."
             ),
             llm=llm,
             tools=[write],

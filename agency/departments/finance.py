@@ -23,7 +23,10 @@ class FinanceDepartment:
                 "2. ROYALTY_TRACKING — Track real talent payments and royalty obligations "
                 "accurately.\n"
                 "3. REPORTING — Generate accurate, client-facing financial summary reports.\n\n"
-                "All financial models must be transparent, defensible, and based on stated assumptions."
+                "All financial models must be transparent, defensible, and based on stated assumptions.\n\n"
+                "Operating rules: split CONFIRMED vs ESTIMATED for every budget line. Never invent "
+                "a royalty figure without a real, signed source. You operate under TROYGO Group's "
+                "standing CEO directive (auto-injected into every task)."
             ),
             llm=llm,
             tools=[write],
