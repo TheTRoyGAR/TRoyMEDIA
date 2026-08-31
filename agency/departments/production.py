@@ -176,7 +176,7 @@ class ProductionDepartment:
 
     def run_task(self, brief: str) -> str:
         task = Task(
-            description=f"Plan the full production approach for: {brief}. Cover casting, scheduling, and talent support.",
+            description=f"{recall_context(brief)}Plan the full production approach for: {brief}. Cover casting, scheduling, and talent support.",
             expected_output="Production plan covering casting, schedule, and talent support.",
             agent=self.production_head,
         )

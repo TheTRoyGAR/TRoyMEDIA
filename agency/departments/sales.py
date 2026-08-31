@@ -116,7 +116,7 @@ class SalesDepartment:
 
     def objection_handler(self, objection: str) -> str:
         task = Task(
-            description=f"OBJECTION_HANDLER: Write an honest, credible response to this real objection: {objection}",
+            description=f"{recall_context(objection)}OBJECTION_HANDLER: Write an honest, credible response to this real objection: {objection}",
             expected_output="A clear, honest, professional response — no overpromising to close a deal.",
             agent=self.sales_head,
         )
@@ -127,7 +127,7 @@ class SalesDepartment:
 
     def run_pipeline(self, brief: str) -> str:
         task = Task(
-            description=f"Plan the full sales/distribution pipeline for: {brief}. Cover pitch, distribution targets, and closing steps.",
+            description=f"{recall_context(brief)}Plan the full sales/distribution pipeline for: {brief}. Cover pitch, distribution targets, and closing steps.",
             expected_output="Sales pipeline plan with concrete next steps.",
             agent=self.sales_head,
         )

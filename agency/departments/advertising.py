@@ -209,7 +209,7 @@ class AdvertisingDepartment:
 
     def run_campaign(self, brief: str) -> str:
         task = Task(
-            description=f"Plan a full advertising campaign for: {brief}. Cover strategy, creative, and media placement.",
+            description=f"{recall_context(brief)}Plan a full advertising campaign for: {brief}. Cover strategy, creative, and media placement.",
             expected_output="Advertising campaign plan: strategy, creative concept, and media plan.",
             agent=self.advertising_head,
         )
