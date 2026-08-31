@@ -114,7 +114,7 @@ class FinanceDepartment:
     def generate_report(self, period: str = "monthly") -> str:
         task_report = Task(
             description=f"Generate a {period} financial report for TRoy Media Agency. Include revenue, expenses, profit margin, cash flow.",
-            expected_output="Financial report with sections: REVENUE, EXPENSES, PROFIT MARGIN, CASH FLOW, KEY INSIGHTS. Use placeholder numbers if no real data provided.",
+            expected_output="Financial report with sections: REVENUE, EXPENSES, PROFIT MARGIN, CASH FLOW, KEY INSIGHTS. If no real data is available for a figure, state '$0 / unconfirmed — no real data available' plainly — never invent a placeholder number and present it as if it were real.",
             agent=self.finance_head,
         )
         task_optimize = Task(
