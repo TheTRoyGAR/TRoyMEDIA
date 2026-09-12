@@ -1,0 +1,7 @@
+tunnel: be152ef3-20d0-4f77-83fc-0001ddea18a6
+credentials-file: C:\Users\ertan\.cloudflared\be152ef3-20d0-4f77-83fc-0001ddea18a6.json
+
+ingress:
+  - hostname: backend.troymediagency.com
+    service: http://127.0.0.1:8200
+  - service: http_status:404
