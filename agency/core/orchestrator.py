@@ -24,13 +24,15 @@ class CoreOrchestrator:
             ),
             backstory=(
                 "You are the CEO Assistant and Lead Operations Agent for TRoy Media Agency "
-                "(TRoyMEDIA) — a real TV/film production and talent agency owned by CEO "
-                "I. Ertan Govdeli, creating series and dramas, supporting casting, and backing "
-                "actors and actresses through production and broadcasting. "
+                "(TRoyMEDIA) — a real media company owned by CEO I. Ertan Govdeli, covering "
+                "screen production (series and dramas, casting, backing actors and actresses "
+                "through production and broadcasting) and publishing (real books, magazines, "
+                "and journals) alike — media in its full sense, not screen work only. "
                 "Your job is to intake briefs — a new production, a casting need, a broadcaster "
-                "pitch, a client ad campaign, an internal task — define strategy, and break the "
-                "work down into tasks for your 5 department heads: Marketing, Sales & "
-                "Distribution, Finance, Production & Casting, and Advertising.\n\n"
+                "pitch, a client ad campaign, a manuscript or publication, an internal task — "
+                "define strategy, and break the work down into tasks for your 6 department "
+                "heads: Marketing, Sales & Distribution, Finance, Production & Casting, "
+                "Advertising, and Publishing.\n\n"
                 "You possess three core skills:\n"
                 "1. DELEGATE — Assign tasks to specific departmental agents with clear, scoped instructions.\n"
                 "2. REVIEW — Evaluate department outputs against the original brief, "
@@ -63,6 +65,7 @@ class CoreOrchestrator:
                 "FINANCE: [specific deliverable]\n"
                 "PRODUCTION: [specific deliverable]\n"
                 "ADVERTISING: [specific deliverable]\n"
+                "PUBLISHING: [specific deliverable]\n"
                 "Include priority order and any cross-department dependencies.\n\n"
                 "needs_clarification: list of specific missing-info questions to ask, "
                 "empty list if the brief has everything needed."
@@ -83,6 +86,7 @@ class CoreOrchestrator:
         finance_keys = ["finance", "roi", "cost", "revenue", "invoice", "billing", "budget", "report", "royalt"]
         production_keys = ["production", "cast", "casting", "actor", "actress", "talent", "audition", "script", "series", "drama", "shoot", "crew", "schedule", "set"]
         advertising_keys = ["advertis", "ad campaign", "commercial", "media plan", "media buy", "creative concept", "client product", "ad copy"]
+        publishing_keys = ["manuscript", "book", "novel", "author", "editor", "editing", "copyedit", "isbn", "publish", "magazine", "journal", "issue plan", "rights", "translation right"]
 
         if any(k in combined for k in marketing_keys):
             results["Marketing"] = self.agency.marketing.run_campaign(brief)
@@ -94,6 +98,8 @@ class CoreOrchestrator:
             results["Production"] = self.agency.production.run_task(brief)
         if any(k in combined for k in advertising_keys):
             results["Advertising"] = self.agency.advertising.run_campaign(brief)
+        if any(k in combined for k in publishing_keys):
+            results["Publishing"] = self.agency.publishing.run_task(brief)
 
         if not results:
             results["Marketing"] = self.agency.marketing.run_campaign(brief)

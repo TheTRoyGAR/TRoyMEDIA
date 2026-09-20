@@ -344,6 +344,14 @@ def route_and_execute(department: str, skill: str, brief: str) -> str:
             "video_ad_production": agency.advertising.video_ad_production,
             "run_campaign": agency.advertising.run_campaign,
         },
+        "publishing": {
+            "manuscript_development": agency.publishing.manuscript_development,
+            "copyedit": agency.publishing.copyedit,
+            "book_production": agency.publishing.book_production,
+            "issue_planning": agency.publishing.issue_planning,
+            "rights_distribution": agency.publishing.rights_distribution,
+            "run_task": agency.publishing.run_task,
+        },
     }
 
     handler = routes.get(department, {}).get(skill)

@@ -3,10 +3,11 @@ from agency.departments.sales import SalesDepartment
 from agency.departments.finance import FinanceDepartment
 from agency.departments.production import ProductionDepartment
 from agency.departments.advertising import AdvertisingDepartment
+from agency.departments.publishing import PublishingDepartment
 
 
 class TRoyMEDIAAgency:
-    """TRoy Media Agency (TRoyMEDIA) — Core Orchestrator + 5 departments, 27 agents, zero employees."""
+    """TRoy Media Agency (TRoyMEDIA) — Core Orchestrator + 6 departments, 34 agents, zero employees."""
 
     CEO = "I. Ertan Govdeli"
     NAME = "TRoy Media Agency (TRoyMEDIA)"
@@ -17,6 +18,7 @@ class TRoyMEDIAAgency:
         self.finance = FinanceDepartment()
         self.production = ProductionDepartment()
         self.advertising = AdvertisingDepartment()
+        self.publishing = PublishingDepartment()
 
         from agency.core.orchestrator import CoreOrchestrator
         self.orchestrator = CoreOrchestrator(self)
@@ -42,6 +44,9 @@ class TRoyMEDIAAgency:
     def run_advertising_campaign(self, brief: str) -> str:
         return self.advertising.run_campaign(brief)
 
+    def run_publishing_task(self, brief: str) -> str:
+        return self.publishing.run_task(brief)
+
     def status(self) -> dict:
         return {
             "agency": self.NAME,
@@ -50,15 +55,16 @@ class TRoyMEDIAAgency:
                 "agent": "CEO Assistant",
                 "skills": ["DELEGATE", "REVIEW", "FINAL_QA"],
             },
-            "departments": 5,
-            "agents_per_department": "5 (Production has 6, Advertising has 6)",
-            "total_agents": 28,
+            "departments": 6,
+            "agents_per_department": "5 (Production has 6, Advertising has 6, Publishing has 6)",
+            "total_agents": 34,
             "department_skills": {
                 "marketing": ["TREND_SCRAPE", "CONTENT_GEN", "PUBLICITY_AUDIT"],
                 "sales": ["PITCH_DEVELOPMENT", "DISTRIBUTION_DEAL", "OBJECTION_HANDLER"],
                 "finance": ["PRODUCTION_BUDGET", "ROYALTY_TRACKING", "REPORTING"],
                 "production": ["CASTING_CALL", "PRODUCTION_SCHEDULE", "TALENT_SUPPORT", "SCRIPT_DEVELOPMENT", "CREW_SUPPORT"],
                 "advertising": ["AD_CAMPAIGN_STRATEGY", "CREATIVE_CONCEPT", "MEDIA_PLANNING", "VIDEO_AD_PRODUCTION"],
+                "publishing": ["MANUSCRIPT_DEVELOPMENT", "COPYEDIT", "BOOK_PRODUCTION", "ISSUE_PLANNING", "RIGHTS_DISTRIBUTION"],
             },
             "shared_memory": "all departments read/write one cross-department knowledge store (agency/core/memory.py)",
             "status": "online",
