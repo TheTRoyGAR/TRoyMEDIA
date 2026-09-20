@@ -121,6 +121,24 @@
     .how-step h4 { font-size: 15px; margin-bottom: 8px; }
     .how-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
+    .capabilities { max-width: 1080px; margin: 0 auto 90px; }
+    .cap-intro { max-width: 640px; margin: 0 auto 40px; text-align: center; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+    .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .cap-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 28px 26px; }
+    .cap-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .cap-card-head .icon { font-size: 18px; color: var(--accent); }
+    .cap-card-head h3 { font-size: 18px; }
+    .cap-card .cap-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 20px; }
+    .cap-steps { display: flex; flex-direction: column; gap: 16px; }
+    .cap-step { display: flex; gap: 12px; }
+    .cap-step .n { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--accent-line, rgba(200,169,110,0.4)); color: var(--accent); font-family: ui-monospace, monospace; font-size: 11px; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .cap-step b { display: block; font-size: 13.5px; color: var(--text); margin-bottom: 2px; }
+    .cap-step span { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+    .cap-honest { margin-top: 28px; border: 1px solid rgba(232,87,138,0.3); background: rgba(232,87,138,0.06); border-radius: 10px; padding: 18px 22px; }
+    .cap-honest .tag { font-family: ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; display: block; }
+    .cap-honest p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .cap-honest p + p { margin-top: 8px; }
+
     .group { max-width: 700px; margin: 0 auto 90px; text-align: center; }
     .group p { color: var(--muted); font-size: 14px; line-height: 1.7; }
     .group-links { display: flex; gap: 14px; justify-content: center; margin-top: 18px; flex-wrap: wrap; }
@@ -147,6 +165,7 @@
       .pillar-grid { grid-template-columns: 1fr 1fr; }
       .service-grid { grid-template-columns: 1fr; }
       .how-steps { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr; }
       nav { padding: 16px 20px; }
       .nav-links { gap: 14px; }
       section, .hero { padding: 0 22px; }
@@ -159,6 +178,7 @@
     <div class="nav-links">
       <a class="nav-link" href="#services">Services</a>
       <a class="nav-link" href="#how">How It Works</a>
+      <a class="nav-link" href="#capabilities">Capabilities</a>
       <a class="nav-link" href="/story">Our Story</a>
       <a class="nav-cta" href="mailto:troymediagency@gmail.com">Get in Touch →</a>
     </div>
@@ -301,6 +321,39 @@
         <h4>Deliver &amp; distribute</h4>
         <p>A finished production, real distribution deals, honest reporting.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="capabilities" id="capabilities">
+    <div class="section-label">What We Actually Do</div>
+    <h2 class="section-title">Inside a real production, and a real ad campaign</h2>
+    <p class="cap-intro">Not a client reel — a walkthrough of the real process our Production &amp; Casting and Advertising departments follow, role by role.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-card-head"><span class="icon">🎬</span><h3>Production &amp; Casting</h3></div>
+        <p class="cap-sub">Head of Production &amp; Casting, Casting Director, Production Coordinator, Talent Support Manager, Script Development Specialist, Crew Support Manager</p>
+        <div class="cap-steps">
+          <div class="cap-step"><span class="n">1</span><div><b>Casting call</b><span>Define exactly what a role needs, then research real candidate actors and actresses who genuinely fit it — never a generic call.</span></div></div>
+          <div class="cap-step"><span class="n">2</span><div><b>Script development</b><span>Story and script work grounded in the actual brief, not a genre template.</span></div></div>
+          <div class="cap-step"><span class="n">3</span><div><b>Production schedule</b><span>A realistic shoot schedule — days, locations, crew needs — built to be achievable, not aspirational.</span></div></div>
+          <div class="cap-step"><span class="n">4</span><div><b>Cast &amp; crew support</b><span>Genuine, practical support for everyone on set — cast and every below-the-line role (cinematographers, editors, designers, sound) — not a checklist.</span></div></div>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-head"><span class="icon">📣</span><h3>Advertising</h3></div>
+        <p class="cap-sub">Head of the AI Advertising Department, Creative Director, and media/video specialists — separate from Marketing, which only promotes TRoyMEDIA's own productions</p>
+        <div class="cap-steps">
+          <div class="cap-step"><span class="n">1</span><div><b>Campaign strategy</b><span>Target audience, core message, and channel mix — grounded in the client's actual brief, never invented numbers.</span></div></div>
+          <div class="cap-step"><span class="n">2</span><div><b>Creative concept</b><span>Real ad copy and scripts — never a product feature or claim that isn't in the brief.</span></div></div>
+          <div class="cap-step"><span class="n">3</span><div><b>Media planning</b><span>Which real channels and platforms actually fit the audience and budget, and why.</span></div></div>
+          <div class="cap-step"><span class="n">4</span><div><b>Video ad production</b><span>Real AI-generated video ads using Google's Veo-class video tools — script, shot breakdown, mapped to an actual YouTube or Google Ads format.</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cap-honest">
+      <span class="tag">Honest state, not a pitch exaggeration</span>
+      <p>TRoyMEDIA hasn't taken a paying production or advertising client yet — this page shows how we work, not a delivered-work portfolio.</p>
+      <p>When a real production or campaign ships, it goes here as a real case study, not before.</p>
     </div>
   </section>
 
