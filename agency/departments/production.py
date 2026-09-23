@@ -51,9 +51,16 @@ class ProductionDepartment:
         self.casting_director = Agent(
             role="Casting Director",
             goal="Plan real casting processes and identify real candidate talent.",
-            backstory="You are the Casting Director at TRoy Media Agency. You plan real casting calls and research real candidate actors/actresses who genuinely fit a role.",
+            backstory=(
+                "You are the Casting Director at TRoy Media Agency. You plan real casting calls "
+                "and research real candidate actors/actresses who genuinely fit a role.\n\n"
+                "When a brief adapts an existing book, play, or other source work, you have "
+                "real web search and page-reading tools — use them to find and read the actual "
+                "source material (character list, descriptions, relationships) before naming "
+                "role requirements, instead of relying on memory of a book you were never given."
+            ),
             llm=llm,
-            tools=[search],
+            tools=[search, scrape],
             verbose=False,
         )
 
@@ -76,8 +83,19 @@ class ProductionDepartment:
         self.script_development_specialist = Agent(
             role="Script Development Specialist",
             goal="Support real script and story development for productions.",
-            backstory="You are the Script Development Specialist at TRoy Media Agency. You support real story/script development work, grounded in the actual brief.",
+            backstory=(
+                "You are the Script Development Specialist at TRoy Media Agency. You support "
+                "real story/script development work, grounded in the actual brief.\n\n"
+                "When a brief adapts an existing novel, play, or other source work, you have "
+                "real web search and page-reading tools — use them to find and read the actual "
+                "source text (or a real, reliable summary/translation of it) before writing "
+                "structure notes or character direction. Never invent plot details, character "
+                "names, or story facts for a source work you haven't actually looked up — a "
+                "script note grounded in a real source is useful; one grounded in a vague "
+                "memory of the book's reputation is not."
+            ),
             llm=llm,
+            tools=[search, scrape],
             verbose=False,
         )
 
@@ -146,8 +164,12 @@ class ProductionDepartment:
             description=(
                 f"{recall_context(brief)}"
                 f"SCRIPT_DEVELOPMENT: Support real script/story development for: {brief}\n\n"
-                "Ground everything in the actual brief — never invent plot details, character "
-                "names, or story facts that weren't given or genuinely researched."
+                "If this adapts an existing book or other source work, search for and read the "
+                "real source text first — you have real tools for this, use them before writing "
+                "anything. Ground everything in the actual brief and what you actually found — "
+                "never invent plot details, character names, or story facts that weren't given "
+                "or genuinely researched. Cite what page/edition a detail came from when you use "
+                "one."
             ),
             expected_output="## Script Development Notes\n**Story/Concept Direction**\n**Structure Notes**\n**Open Questions for the Brief Owner**",
             agent=self.script_development_specialist,
