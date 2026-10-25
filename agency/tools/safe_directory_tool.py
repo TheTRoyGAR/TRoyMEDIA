@@ -48,7 +48,8 @@ class SafeDirectoryReadTool(BaseTool):
     def _run(self, directory: str = "") -> str:
         start = os.path.join(self.root, directory) if directory else self.root
         start = os.path.normpath(start)
-        if not start.startswith(os.path.normpath(self.root)):
+        root_norm = os.path.normpath(self.root)
+        if start != root_norm and not start.startswith(root_norm + os.sep):
             return f"Refused: '{directory}' resolves outside the sandboxed root."
         if not os.path.isdir(start):
             return f"Not a directory: {start}"
